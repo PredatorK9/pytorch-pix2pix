@@ -3,6 +3,9 @@ import torch.nn as nn
 
 
 def apply_weights(model):
+    '''
+    A small function for weight initialization of the model.
+    '''
     classname = model.__class__.__name__
     if classname.find('Conv') != -1:
         nn.init.normal_(model.weight.data, 0.0, 0.02)
@@ -12,6 +15,14 @@ def apply_weights(model):
 
 
 class EncoderBlock(nn.Module):
+    '''
+    Returns a block of encoding unit for the Unet model.\n
+
+    Args:\n
+    > in_features: Number of input channels.\n
+    > out_features: Number of output channels.\n
+    > batch_norm: Use batch normalization or not (default=```True```).
+    '''
     def __init__(self, in_features, out_features, batch_norm=True):
         super(EncoderBlock, self).__init__()
         self.batch = batch_norm
@@ -32,6 +43,14 @@ class EncoderBlock(nn.Module):
 
 
 class DecoderBlock(nn.Module):
+    '''
+    Returns a block of decoding unit for the Unet model.\n
+
+    Args:\n
+    > in_features: Number of input channels.\n
+    > out_features: Number of output channels.\n
+    > dropout: Use dropout or not (default=```True```).
+    '''
     def __init__(self, in_features, out_features, dropout=True):
         super(DecoderBlock, self).__init__()
         self.drop = dropout
@@ -47,6 +66,10 @@ class DecoderBlock(nn.Module):
         self.relu = nn.ReLU()
 
     def forward(self, x, skip_x):
+        '''
+        x: input tensor\n
+        skip_x: skip connection tensor\n
+        '''
         x = self.conv_transpose(x)
         x = self.batch_norm(x)
         if self.drop:

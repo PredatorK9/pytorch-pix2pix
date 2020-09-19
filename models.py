@@ -4,6 +4,9 @@ from utils import EncoderBlock, DecoderBlock
 
 
 class PatchGAN(nn.Module):
+    '''
+    PatchGAN implementation for Discriminator Model.
+    '''
     def __init__(self):
         super(PatchGAN, self).__init__()
 
@@ -30,6 +33,9 @@ class PatchGAN(nn.Module):
 
 
 class Unet(nn.Module):
+    '''
+    U-Net implementation for generative model.
+    '''
     def __init__(self):
         super(Unet, self).__init__()
 

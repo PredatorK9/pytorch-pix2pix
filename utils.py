@@ -1,6 +1,5 @@
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
 
 
 def apply_weights(model):
@@ -18,7 +17,7 @@ class EncoderBlock(nn.Module):
         self.batch = batch_norm
 
         self.conv = nn.Conv2d(in_features, out_features,
-            kernel_size=4, stride=2, padding=1)
+            kernel_size=4, stride=2, padding=1, bias=not batch_norm)
         
         if self.batch:
             self.batch_norm = nn.BatchNorm2d(out_features)
@@ -38,7 +37,7 @@ class DecoderBlock(nn.Module):
         self.drop = dropout
 
         self.conv_transpose = nn.ConvTranspose2d(in_features, out_features,
-            kernel_size=4, stride=2, padding=1)
+            kernel_size=4, stride=2, padding=1, bias=False)
 
         self.batch_norm = nn.BatchNorm2d(out_features)
 

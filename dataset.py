@@ -51,8 +51,8 @@ class MapDataset(Dataset):
             self.files[idx])).convert('RGB')
 
         if self.transform is not None:
-            image = self.transform(image)[:3, :, :].unsqueeze(0)
+            image = self.transform(image)[:3, :, :]
 
-        _, _, _, width = image.shape
-        sample = (image[:, :, :, :width//2], image[:, :, :, width//2:])
+        _, _, width = image.shape
+        sample = (image[:, :, :width//2], image[:, :, width//2:])
         return sample

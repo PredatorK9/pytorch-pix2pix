@@ -53,5 +53,6 @@ class MapDataset(Dataset):
         if self.transform is not None:
             image = self.transform(image)[:3, :, :].unsqueeze(0)
 
-        sample = (image[:, :, :, :], image[:, :, :, :])
+        _, _, _, width = image.shape
+        sample = (image[:, :, :, :width//2], image[:, :, :, width//2:])
         return sample

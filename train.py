@@ -99,7 +99,7 @@ def train(num_epoch, ckpth, netD, netG, dataloader, lam,
             fake_labels = torch.zeros_like(fake_output).to(device)
             lossD_fake = patch_criterion(fake_output, fake_labels)
 
-            lossD = lossD_real+lossD_fake
+            lossD = 0.5*(lossD_real+lossD_fake)
             lossD.backward()
             optimizerD.step()
 

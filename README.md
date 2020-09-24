@@ -1,6 +1,6 @@
 # Pytorch-Pix2Pix
 
-Implementation of Pix2Pix generative model <3  
+Implementation of Pix2Pix generative model :heart:  
 
 This repo contains code to train the models based on [Image-to-Image Translation with Conditional Adversarial Networks](https://arxiv.org/abs/1611.07004)  
 

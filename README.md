@@ -12,8 +12,8 @@ The model is trained on Map and Satelite image dataset with Map images as the in
 
 The pretrained checkpoints can be loaded and be used directly with the ```convert.py``` script. It will convert the map images to satelite images with the output resolution as __256x256__.
 
-> ```--src```: Path to the source image
-> ```--dest```: Path to the destination folder
+> ```--src```: Path to the source image  
+> ```--dest```: Path to the destination folder  
 > ```--ckpth```: Path to the Generator model checkpoint  
 
 For those who want to train the model from scratch on the same or different dataset can train it with the help of ```train.py```  
